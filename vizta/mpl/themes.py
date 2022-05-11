@@ -18,15 +18,16 @@ def set_theme(
     """Get the parameters that control the general style of the plots.
 
     This function can also be used as a context manager to temporarily
-    alter the global defaults. See :func:`set_theme` or :func:`set_style`
-    to modify the global defaults for all plots.
+    alter the global defaults.
 
     Parameters
     ----------
     context : str or dict, optional
-        The scaling parameters. See :func:`seaborn.plotting_context`.
-    style : str, one of {talusbio, wfondrie}, optional
-        The name of a preconfigured style.
+        The scaling parameters. Can be one of `paper` `notebook`, `talk`, or
+        `poster`. See [seaborn.plotting_context][].
+    style : str, optional
+        The name of a preconfigured style. Currently either `talusbio` or
+        `wfondrie`.
     font_scale : float, optional
         Separate scaling factor to independently scale the size of the font
         elements
@@ -37,6 +38,7 @@ def set_theme(
         The primary color for the plot elements.
     accent_color : str
         The accent color for the plot elements.
+
     """
     try:
         theme = VIZTA_STYLES[style]
@@ -98,6 +100,7 @@ class MplTheme:
             "axes.spines.top": True,
             "xtick.bottom": True,
             "ytick.left": True,
+            "legend.frameon": False,
             # Colors:
             "axes.edgecolor": self.primary,
             "axes.labelcolor": self.primary,

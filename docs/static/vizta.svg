@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 140 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-11.3562,9.14008)">
+        <text x="14.941px" y="8.211px" style="font-family:'FiraCode-Retina', 'Fira Code';font-weight:450;font-size:18px;fill:rgb(0,20,37);">data</text>
+        <text x="59.248px" y="8.211px" style="font-family:'FiraCode-Retina', 'Fira Code';font-weight:450;font-size:18px;fill:rgb(48,138,173);">viz</text>
+        <text x="48.172px" y="26.211px" style="font-family:'FiraCode-Retina', 'Fira Code';font-weight:450;font-size:18px;fill:rgb(0,20,37);">@</text>
+        <text x="59.248px" y="26.211px" style="font-family:'FiraCode-Retina', 'Fira Code';font-weight:450;font-size:18px;fill:rgb(48,138,173);">ta</text>
+        <text x="81.402px" y="26.211px" style="font-family:'FiraCode-Retina', 'Fira Code';font-weight:450;font-size:18px;fill:rgb(0,20,37);">lusbio</text>
+    </g>
+    <path d="M103.161,20L94.3,2.969L84.82,20L89.581,11.485L90.505,13.273L93.158,10.697L96.232,13.273L98.424,10.895L103.161,20Z" style="fill:rgb(48,138,173);stroke:black;stroke-width:1px;"/>
+    <path d="M103.362,9.757L101.917,11.485L99.967,9.54L98.809,11.453L101.781,6.546L105.093,13.273L103.362,9.757Z" style="fill:rgb(48,138,173);stroke:black;stroke-width:1px;"/>
+    <path d="M119.778,20L110.49,6.546L101.781,17.347L107.248,10.567L108.114,12.685L110.362,10.625L112.235,11.868L113.899,11.485L119.778,20Z" style="fill:rgb(48,138,173);stroke:black;stroke-width:1px;"/>
+</svg>
