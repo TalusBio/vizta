@@ -39,7 +39,7 @@ jobs:
     - name: Run unit and system tests
       run: |
         pytest --cov=ppx tests/
-    - name: Upload coverage to codecov
-      uses: codecov/codecov-action@v1
-      with:
-        fail_ci_if_error: true
+    #- name: Upload coverage to codecov
+    #  uses: codecov/codecov-action@v1
+    #  with:
+    #    fail_ci_if_error: true
