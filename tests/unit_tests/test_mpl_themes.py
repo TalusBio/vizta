@@ -26,7 +26,7 @@ def test_font_scale():
 
 
 def test_plotly_styles():
-    """Really just check that they don't error"""
+    """Really just check that theme doesn't error"""
     vizta.mpl.plotly_vizta_theme()
     with pytest.raises(ValueError):
         vizta.mpl.set_theme(style="blah")

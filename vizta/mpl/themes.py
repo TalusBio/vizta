@@ -7,6 +7,9 @@ from typing import List, Tuple, Dict, Any, Optional, Union
 
 import seaborn as sns
 
+import plotly.graph_objects as go
+import plotly.io as pio
+
 from .. import palettes  # Needed to edit seaborn palette dict.
 
 
@@ -55,26 +58,25 @@ def set_theme(
     return theme.primary, theme.accent
 
 
-import plotly.graph_objects as go
-import plotly.io as pio
-
 def plotly_vizta_theme():
     pio.templates["talusbio"] = go.layout.Template(
-        layout = {
-            # Note - 'family' must be a single string, NOT a list or dict!
-            'title':
-                {'font': {'family': 'Helvetica,Arial,sans-serif',
-                          'size': 30,
-                          'color': '#333'}
-                 },
-            'font': {'family': 'Helvetica,Arial,sans-serif',
-                     'size': 16,
-                     'color': '#333'},
+        layout={
+            "title": {
+                "font": {
+                    "family": "Helvetica,Arial,sans-serif",
+                    "size": 30,
+                    "color": "#333",
+                }
+            },
+            "font": {
+                "family": "Helvetica,Arial,sans-serif",
+                "size": 16,
+                "color": "#333",
+            },
             # Colorways
-            'colorway': ["#308AAD", "#C8102E", "#96D8D8", "#B2EE79"],
+            "colorway": ["#308AAD", "#C8102E", "#96D8D8", "#B2EE79"],
         }
     )
-    # return pio.templates['talus']
 
 
 @dataclass
