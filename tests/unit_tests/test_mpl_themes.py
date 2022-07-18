@@ -23,3 +23,10 @@ def test_font_scale():
     vizta.mpl.set_theme(font_scale=2)
     with pytest.raises(ValueError):
         vizta.mpl.set_theme(font_scale="blah")
+
+
+def test_plotly_styles():
+    """Really just check that they don't error"""
+    vizta.mpl.plotly_vizta_theme()
+    with pytest.raises(ValueError):
+        vizta.mpl.set_theme(style="blah")
