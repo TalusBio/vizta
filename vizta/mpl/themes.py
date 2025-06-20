@@ -127,11 +127,11 @@ class MplTheme:
 VIZTA_STYLES = {
     "talusbio": MplTheme(
         palette="talusbio",
-        primary="#001425",
-        accent="#C8102E",
+        primary="#0C015B",
+        accent="#64C0CA",
         rc_params={
             "font.family": "sans-serif",
-            "font.sans-serif": ["Montserrat"],
+            "font.sans-serif": ["Host Grotesk", "Arial", "Helvetica"],
         },
     ),
     "wfondrie": MplTheme(
