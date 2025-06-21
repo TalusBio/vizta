@@ -8,6 +8,8 @@ from typing import List, Tuple, Dict, Any, Optional, Union
 
 import seaborn as sns
 
+from .. import palettes  # Needed to edit seaborn palette dict # noqa: F401
+
 
 def set_theme(
     context: Union[str, Dict] = "notebook",
