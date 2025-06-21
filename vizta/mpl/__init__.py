@@ -1,1 +1,1 @@
-from .themes import set_theme
+from .themes import set_theme as set_theme
