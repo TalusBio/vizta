@@ -1,4 +1,5 @@
 """Plotting color palettes"""
+
 import seaborn as sns
 
 # Add new color palettes here:

@@ -2,12 +2,11 @@
 
 New themes are defined at the bottom of this file.
 """
+
 from dataclasses import dataclass
 from typing import List, Tuple, Dict, Any, Optional, Union
 
 import seaborn as sns
-
-from .. import palettes  # Needed to edit seaborn palette dict.
 
 
 def set_theme(
@@ -113,7 +112,7 @@ class MplTheme:
             self.style_dict.update(self.rc_params)
 
     @property
-    def palette(self) -> List[Tuple[float, float, float]]:
+    def palette(self) -> List[Tuple[float, float, float]]:  # noqa: F811
         """The color palette"""
         return self._palette
 
