@@ -17,15 +17,31 @@ jobs:
 
       - name: Install font
         run: |
+          # ---- Install Host Grotesk (latest release) ----
+          set -euo pipefail
+
+          sudo apt-get update -y
+          sudo apt-get install -y curl unzip jq fontconfig
+
+          # 1) discover the latest ZIP asset
           tmpdir=$(mktemp -d)
-          wget -q -O "$tmpdir/host-grotesk.zip" \
-            "https://github.com/Element-Type/HostGrotesk/releases/download/1.002/HostGrotesk_v1.002.zip"
-          unzip -q "$tmpdir/host-grotesk.zip" -d "$tmpdir"
+          asset_url=$(curl -sL https://api.github.com/repos/Element-Type/HostGrotesk/releases/latest \
+            | jq -r '.assets[] | select(.content_type=="application/zip") | .browser_download_url' \
+            | head -n1)
 
+          # 2) download it (-L follows redirects, -f makes curl error if the HTTP status isn’t 2xx)
+          curl -fL "$asset_url" -o "$tmpdir/hostgrotesk.zip"
+
+          # 3) unpack locally
+          unzip -q "$tmpdir/hostgrotesk.zip" -d "$tmpdir"
+
+          # 4) copy TTFs into the system font dir
           sudo mkdir -p /usr/local/share/fonts/host-grotesk
-          sudo cp "$tmpdir"/*.ttf /usr/local/share/fonts/host-grotesk/
+          sudo find "$tmpdir" -type f -iname '*.ttf' -exec cp {} /usr/local/share/fonts/host-grotesk/ \;
 
+          # 5) refresh cache & verify
           sudo fc-cache -fv
-          fc-match "Host Grotesk"
+          fc-match "Host Grotesk"        # should print HostGrotesk-Regular.ttf
+
       - run: uv sync --group docs
       - run: uv run mkdocs gh-deploy --force
