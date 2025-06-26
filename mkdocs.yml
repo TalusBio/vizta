@@ -26,22 +26,16 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
 
-extra:
-  social:
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/talusbio
-
 plugins:
   - search
   - mkdocstrings:
       default_handler: python
       handlers:
         python:
-          selection:
-            docstring_style: numpy
           import:
             - https://seaborn.pydata.org/objects.inv
-          rendering:
+          options:
+            docstring_style: numpy
             show_root_heading: true
             heading_level: 3
             docstring_section_style: spacy
