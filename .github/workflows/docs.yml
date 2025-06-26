@@ -17,25 +17,13 @@ jobs:
 
       - name: Install font
         run: |
-          # ---- Install Host Grotesk from Google Fonts ----
-          sudo apt-get update -y
-          sudo apt-get install -y wget unzip      # tar is no longer needed
-
-          # 1) download the family ZIP
-          tmp_dir=$(mktemp -d)
-          cd "$tmp_dir"
-          # Download the family ZIP (-L follows the redirect to fonts.gstatic.com)
-          curl -L -o host-grotesk.zip \
-            "https://fonts.google.com/download?family=Host+Grotesk"
-
-          sudo mkdir -p /usr/share/fonts/truetype/hostgrotesk
-          unzip -q host-grotesk.zip -d /usr/share/fonts/truetype/hostgrotesk
-          sudo chmod -R --reference=/usr/share/fonts/truetype/dejavu \
-               /usr/share/fonts/truetype/hostgrotesk
-
-          # 3) refresh cache & sanity-check
+          # Install Host Grotesk instead of Montserrat
+          cd /usr/local/share/fonts
+          wget -q https://github.com/Element-Type/HostGrotesk/releases/download/1.002/HostGrotesk_v1.002.zip -O host-grotesk.zip
+          unzip -q host-grotesk.zip
+          sudo chmod -R --reference=/usr/share/fonts/truetype HostGrotesk
           sudo fc-cache -fv
-          fc-match "Host Grotesk"   # → HostGrotesk-Regular.ttf
+          fc-match "Host Grotesk"
 
       - run: uv sync --group docs
       - run: uv run mkdocs gh-deploy --force
