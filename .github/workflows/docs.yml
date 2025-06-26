@@ -17,14 +17,15 @@ jobs:
 
       - name: Install font
         run: |
-          # Install Host Grotesk instead of Montserrat
-          cd /usr/local/share/fonts
-          sudo chmod -R u+w .
-          wget -q https://github.com/Element-Type/HostGrotesk/releases/download/1.002/HostGrotesk_v1.002.zip -O host-grotesk.zip
-          unzip -q host-grotesk.zip
-          sudo chmod -R --reference=/usr/share/fonts/truetype HostGrotesk
+          tmpdir=$(mktemp -d)
+          wget -q -O "$tmpdir/host-grotesk.zip" \
+            "https://github.com/Element-Type/HostGrotesk/releases/download/1.002/HostGrotesk_v1.002.zip"
+          unzip -q "$tmpdir/host-grotesk.zip" -d "$tmpdir"
+
+          sudo mkdir -p /usr/local/share/fonts/host-grotesk
+          sudo cp "$tmpdir"/*.ttf /usr/local/share/fonts/host-grotesk/
+
           sudo fc-cache -fv
           fc-match "Host Grotesk"
-
       - run: uv sync --group docs
       - run: uv run mkdocs gh-deploy --force
