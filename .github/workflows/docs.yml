@@ -9,29 +9,31 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: pyproject.toml
 
       - name: Install font
         run: |
-          # ---- Install Host Grotesk (v1.002) ----
-          # prerequisites (unzip isn’t needed if you keep using tar)
+          # ---- Install Host Grotesk from Google Fonts ----
           sudo apt-get update -y
-          sudo apt-get install -y wget tar
-          # 1) create a spot for the family
+          sudo apt-get install -y wget unzip      # tar is no longer needed
+
+          # 1) download the family ZIP
+          tmp_dir=$(mktemp -d)
+          cd "$tmp_dir"
+          wget -q -O host-grotesk.zip "https://fonts.google.com/download?family=Host%20Grotesk"
+
+          # 2) unpack and copy just the TTFs into the OS font directory
+          unzip -q host-grotesk.zip
           sudo mkdir -p /usr/share/fonts/truetype/hostgrotesk
-          cd /usr/share/fonts/truetype/hostgrotesk
-          # 2) download the latest release tarball
-          #    -> https://github.com/Element-Type/HostGrotesk/releases/tag/1.002
-          wget -q https://github.com/Element-Type/HostGrotesk/archive/refs/tags/1.002.tar.gz
-          # 3) extract only the TTFs; strip the first two path components
-          tar --wildcards --strip-components=2 -xzf 1.002.tar.gz "*/fonts/ttf/*.ttf"
-          # 4) match permissions to other truetype fonts
-          sudo chmod -R --reference=/usr/share/fonts/truetype/dejavu .
-          # 5) refresh the cache & verify
+          sudo cp ./*.ttf /usr/share/fonts/truetype/hostgrotesk/
+
+          # 3) refresh cache & sanity-check
           sudo fc-cache -fv
-          fc-match "Host Grotesk"
-      - run: pip install ".[docs]"
-      - run: mkdocs gh-deploy --force
+          fc-match "Host Grotesk"   # → HostGrotesk-Regular.ttf
+
+      - run: uv sync --group docs
+      - run: uv run mkdocs gh-deploy --force
