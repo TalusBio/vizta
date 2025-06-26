@@ -24,12 +24,14 @@ jobs:
           # 1) download the family ZIP
           tmp_dir=$(mktemp -d)
           cd "$tmp_dir"
-          wget -q -O host-grotesk.zip "https://fonts.google.com/download?family=Host%20Grotesk"
+          # Download the family ZIP (-L follows the redirect to fonts.gstatic.com)
+          curl -L -o host-grotesk.zip \
+            "https://fonts.google.com/download?family=Host+Grotesk"
 
-          # 2) unpack and copy just the TTFs into the OS font directory
-          unzip -q host-grotesk.zip
           sudo mkdir -p /usr/share/fonts/truetype/hostgrotesk
-          sudo cp ./*.ttf /usr/share/fonts/truetype/hostgrotesk/
+          unzip -q host-grotesk.zip -d /usr/share/fonts/truetype/hostgrotesk
+          sudo chmod -R --reference=/usr/share/fonts/truetype/dejavu \
+               /usr/share/fonts/truetype/hostgrotesk
 
           # 3) refresh cache & sanity-check
           sudo fc-cache -fv
