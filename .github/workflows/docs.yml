@@ -13,7 +13,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - uses: actions/setup-python@v5
         with:
-          python-version: pyproject.toml
+          python-version-file: pyproject.toml
 
       - name: Install font
         run: |
