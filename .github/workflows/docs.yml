@@ -19,8 +19,8 @@ jobs:
         run: |
           # Install Host Grotesk instead of Montserrat
           cd /usr/local/share/fonts
-          wget -q https://github.com/Element-Type/HostGrotesk/releases/download/1.002/HostGrotesk_v1.002.zip -O host-grotesk.zip
-          unzip -q host-grotesk.zip
+          sudo wget -q https://github.com/Element-Type/HostGrotesk/releases/download/1.002/HostGrotesk_v1.002.zip -O host-grotesk.zip
+          sudo unzip -q host-grotesk.zip
           sudo chmod -R --reference=/usr/share/fonts/truetype HostGrotesk
           sudo fc-cache -fv
           fc-match "Host Grotesk"
