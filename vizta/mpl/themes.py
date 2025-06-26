@@ -2,12 +2,13 @@
 
 New themes are defined at the bottom of this file.
 """
+
 from dataclasses import dataclass
 from typing import List, Tuple, Dict, Any, Optional, Union
 
 import seaborn as sns
 
-from .. import palettes  # Needed to edit seaborn palette dict.
+from .. import palettes  # Needed to edit seaborn palette dict # noqa: F401
 
 
 def set_theme(
@@ -113,7 +114,7 @@ class MplTheme:
             self.style_dict.update(self.rc_params)
 
     @property
-    def palette(self) -> List[Tuple[float, float, float]]:
+    def palette(self) -> List[Tuple[float, float, float]]:  # noqa: F811
         """The color palette"""
         return self._palette
 
@@ -127,11 +128,11 @@ class MplTheme:
 VIZTA_STYLES = {
     "talusbio": MplTheme(
         palette="talusbio",
-        primary="#001425",
-        accent="#C8102E",
+        primary="#0C015B",
+        accent="#64C0CA",
         rc_params={
             "font.family": "sans-serif",
-            "font.sans-serif": ["Montserrat"],
+            "font.sans-serif": ["Host Grotesk", "Arial", "Helvetica"],
         },
     ),
     "wfondrie": MplTheme(

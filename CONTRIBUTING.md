@@ -19,7 +19,7 @@ There are three exceptions to this:
 
 2. The Vignettes are created from Jupyter notebooks.
 
-3. The Code of Conduct, Release Notes, and this Contributing document are 
+3. The Code of Conduct, Release Notes, and this Contributing document are
    markdown files that live in the root of the vizta repository.
 
 ### Editing most documents
@@ -39,7 +39,7 @@ way.
 
 ## Contributing to the code
 
-We welcome contributions to the source code of vizta---particularly 
+We welcome contributions to the source code of vizta---particularly
 ones that address discussed [issues](https://github.com/TalusBio/vizta/issues).
 
 Contributions to vizta follow a standard GitHub contribution workflow:

@@ -1,5 +1,6 @@
 """Plotting color palettes"""
-import seaborn as sns
+
+from seaborn import palettes
 
 # Add new color palettes here:
 VIZTA_PALETTES = {
@@ -9,4 +10,4 @@ VIZTA_PALETTES = {
 
 # Register palettes:
 for name, colors in VIZTA_PALETTES.items():
-    sns.palettes.SEABORN_PALETTES[name] = colors
+    palettes.SEABORN_PALETTES[name] = colors

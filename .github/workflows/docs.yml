@@ -16,12 +16,22 @@ jobs:
 
       - name: Install font
         run: |
-          cd /usr/share/fonts
-          wget https://github.com/JulietaUla/Montserrat/archive/refs/tags/v7.222.tar.gz
-          tar -xvzf v7.222.tar.gz
-          sudo chmod -R --reference=/usr/share/fonts/truetype Montserrat-7.222
+          # ---- Install Host Grotesk (v1.002) ----
+          # prerequisites (unzip isn’t needed if you keep using tar)
+          sudo apt-get update -y
+          sudo apt-get install -y wget tar
+          # 1) create a spot for the family
+          sudo mkdir -p /usr/share/fonts/truetype/hostgrotesk
+          cd /usr/share/fonts/truetype/hostgrotesk
+          # 2) download the latest release tarball
+          #    -> https://github.com/Element-Type/HostGrotesk/releases/tag/1.002
+          wget -q https://github.com/Element-Type/HostGrotesk/archive/refs/tags/1.002.tar.gz
+          # 3) extract only the TTFs; strip the first two path components
+          tar --wildcards --strip-components=2 -xzf 1.002.tar.gz "*/fonts/ttf/*.ttf"
+          # 4) match permissions to other truetype fonts
+          sudo chmod -R --reference=/usr/share/fonts/truetype/dejavu .
+          # 5) refresh the cache & verify
           sudo fc-cache -fv
-          fc-match Montserrat
-
+          fc-match "Host Grotesk"
       - run: pip install ".[docs]"
       - run: mkdocs gh-deploy --force

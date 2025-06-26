@@ -1,4 +1,5 @@
 """Test matplotlib themes"""
+
 import pytest
 import vizta
 
